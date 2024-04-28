@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet, View, TextInput} from 'react-native';
+import {theme} from '../theme';
 
 export default function CustomInput({
   label,
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 18,
+    color: theme.colors.primary,
   },
   input: {
     borderWidth: 1,

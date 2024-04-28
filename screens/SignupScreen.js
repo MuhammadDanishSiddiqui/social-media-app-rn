@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
-import {Text, StyleSheet, View, Alert} from 'react-native';
+import {Text, StyleSheet, View, Alert, TouchableOpacity} from 'react-native';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
+import {theme} from '../theme';
+import {SCREENS} from '../constants/screens';
 
-export default function SignUpScreen() {
+export default function SignUpScreen({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    Alert.alert('Validation Error', 'Please fill all fields');
+    navigation.replace(SCREENS.HOME);
+    // Alert.alert('Validation Error', 'Please fill all fields');
   };
   return (
     <View style={styles.container}>
@@ -29,9 +32,11 @@ export default function SignUpScreen() {
         />
         <CustomButton title={'Sign Up'} onPress={handleSubmit} />
         <View style={{marginVertical: 15, alignItems: 'center'}}>
-          <Text>
-            Already have an account ? <Text style={styles.signup}>Login</Text>
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate(SCREENS.LOGIN)}>
+            <Text style={{color: theme.colors.primary}}>
+              Already have an account ? <Text style={styles.signup}>Login</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -47,14 +52,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    color: '#9F29D7',
+    color: theme.colors.secondary,
     fontWeight: 'bold',
   },
   formContainer: {
     width: '100%',
   },
   signup: {
-    color: '#9F29D7',
+    color: theme.colors.secondary,
     fontWeight: 'bold',
   },
 });

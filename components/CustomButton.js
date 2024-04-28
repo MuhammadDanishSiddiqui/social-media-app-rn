@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
+import {theme} from '../theme';
 
 export default function CustomButton({title, onPress}) {
   return (
@@ -13,7 +14,7 @@ export default function CustomButton({title, onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#9F29D7',
+    backgroundColor: theme.colors.secondary,
     padding: 10,
     borderRadius: 50,
   },
